@@ -1,38 +1,22 @@
 #!/usr/bin/env python3
 #By Kyle Jelle
 
-#This is just a counter.
-loginfail = 0
+loginfail = 0                                                                            #This is just a counter.
+loginsuccess = 0                                                                         #And another counter.
+ipfail = []                                                                              #And this is the IP address list
+keystone_file = open('/home/student/mycode/day04/attemptlogin/keystone.common.wsgi','r') #Create file-object
 
-#And another counter.
-loginsuccess = 0
+keystone_file_lines = keystone_file.readlines()                                          #Create list of lines from file object.
 
-#Create file-object
-keystone_file = open('/home/student/mycode/day04/attemptlogin/keystone.common.wsgi','r')
+for i in range(len(keystone_file_lines)):                                                #Create for loop
+    if "- - - - -] Authorization failed" in keystone_file_lines[i]:                      #If statement for failure
+        loginfail += 1                                                                   #Increment the fail counter
+        ipfail.append(keystone_file_lines[i].split(' ')[-1])                             #Add IP address to ipfail list
 
-#Create list of lines from file object.
-keystone_file_lines=keystone_file.readlines()
+    elif "-] Authorization failed" in keystone_file_lines[i]:                            #If statement for success
+        loginsuccess += 1                                                                #Increment the success counter
 
-#Create for loop
-for i in range(len(keystone_file_lines)):
-
-    #If statement for failure
-    if "- - - - -] Authorization failed" in keystone_file_lines[i]:
-
-        #Increment the fail counter
-        loginfail += 1
-
-        #Add IP address to ipfail list
-        
-
-    #If statement for success
-    elif "-] Authorization failed" in keystone_file_lines[i]:
-
-        #Increment the success counter
-        loginsuccess += 1
-
-#Print results
-print('The number of failed log in attempts is ' + str(loginfail))
+print('The number of failed log in attempts is ' + str(loginfail))                       #Print results
 print('The number of successful log in attempts is ' + str(loginsuccess))
 print('The following IP addresses were associated with failed login attempts')
 print(ipfail)
