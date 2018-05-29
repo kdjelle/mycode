@@ -1,0 +1,4 @@
+10.1.0.1
+interface eth1/2
+no shut
+write mem
