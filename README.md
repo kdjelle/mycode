@@ -1,4 +1,4 @@
-A# mycode (Learning Python)
+# mycode (Learning Python)
 
 This project represents my initial learning experiences in Python programming.
 
