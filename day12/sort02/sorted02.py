@@ -7,3 +7,11 @@ iplistkeyed = sorted(iplist, key=len)
 print('\nResults of sorted(iplist, key=len): ' + str(iplistkeyed))
 bakiplistkeyed = sorted(iplist, key=len, reverse=True)
 print('\nResults of sorted(iplist, key=len, reverse=True): ' + str(bakiplistkeyed))
+dnsrecord_types = [ 'a', 'MX', 'AAAA', 'CNAME', 'naptr', 'ns', 'svr', 'SOA' ]
+print('\ndnsrecord_types looks like this:', dnsrecord_types)
+print('\nResults of sorted(dnsrecord_types):', sorted(dnsrecord_types))
+print('Results of sorted(dnscecord_types, key=str.lower):', sorted(dnsrecord_types, key=str.upper))
+# customization 01
+students = ['Nick', 'Eddie', 'Josh', 'Homer', 'Robert', 'Vivian', 'Kyle', 'Dre', 'Chris', 'Paul', 'Kyle', 'Micah' ]
+sortstudents = sorted(students, key=str.lower)
+print(sortstudents)
